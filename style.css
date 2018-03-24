@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
+#canvas {
+  background: #34ed4d;
+}
+
+.active #eraser {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+
+.active #brush {
+  display: none;
+}
+
+.inactive #eraser {
+  display: none;
+}
+
+.inactive #brush {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+
+
+
