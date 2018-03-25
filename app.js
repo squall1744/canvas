@@ -13,7 +13,7 @@ let eraserEnable = false
 
 
 autoSetCanvasSize()
-listenToMouse(canvas)
+listenToUser(canvas)
 changeTools()
 
 
@@ -61,40 +61,76 @@ function autoSetCanvasSize(){
 
 
 /*****************/
- function listenToMouse(canvas) {
-  canvas.onmousedown = e => {
-    use = true
-    let x = e.clientX
-    let y = e.clientY
-    lastPoint.x = x
-    lastPoint.y = y
-    if(eraserEnable) {
-      eraseDrawing(x,y)
-    }else {
-      drawCircle(x,y)
-    }
-  }
-  
-  canvas.onmousemove = e => {
-    let x = e.clientX
-    let y = e.clientY
-    if(use) {
+function listenToUser(canvas) {
+  if(document.body.ontouchstart !== undefined) {
+    canvas.ontouchstart = e => {
+      use = true
+      let x = e.touches[0].clientX
+      let y = e.touches[0].clientY
+      lastPoint.x = x
+      lastPoint.y = y
       if(eraserEnable) {
         eraseDrawing(x,y)
       }else {
-        let newPoint = {
-          x:x,
-          y:y
-        }
-        drawLine(lastPoint.x,lastPoint.y,x,y)
         drawCircle(x,y)
-        lastPoint = newPoint
       }
     }
+
+    canvas.ontouchmove = e => {
+      let x = e.touches[0].clientX
+      let y = e.touches[0].clientY
+      if(use) {
+        if(eraserEnable) {
+          eraseDrawing(x,y)
+        }else {
+          let newPoint = {
+            x:x,
+            y:y
+          }
+          drawLine(lastPoint.x,lastPoint.y,x,y)
+          drawCircle(x,y)
+          lastPoint = newPoint
+        }
+      }
+    }
+
+    canvas.ontouchend = e => use = false
+  }else {
+    canvas.onmousedown = e => {
+      use = true
+      let x = e.clientX
+      let y = e.clientY
+      lastPoint.x = x
+      lastPoint.y = y
+      if(eraserEnable) {
+        eraseDrawing(x,y)
+      }else {
+        drawCircle(x,y)
+      }
+    }
+    
+    canvas.onmousemove = e => {
+      let x = e.clientX
+      let y = e.clientY
+      if(use) {
+        if(eraserEnable) {
+          eraseDrawing(x,y)
+        }else {
+          let newPoint = {
+            x:x,
+            y:y
+          }
+          drawLine(lastPoint.x,lastPoint.y,x,y)
+          drawCircle(x,y)
+          lastPoint = newPoint
+        }
+      }
+    }
+    
+    canvas.onmouseup = e => use = false
   }
-  
-  canvas.onmouseup = e => use = false
 }
+  
 
 
 
@@ -110,4 +146,3 @@ function changeTools() {
     tools.className = 'active' 
   }
 }
-
