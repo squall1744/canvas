@@ -22,7 +22,9 @@ autoSetCanvasSize()
 listenToUser(canvas)
 changeTools()
 
-
+/*禁止鼠标右键显示菜单*/
+document.oncontextmenu=new Function("event.returnValue=false;");
+document.onselectstart=new Function("event.returnValue=false;");
 
 /**********************功能模块***************************************/
 
@@ -82,7 +84,7 @@ function listenToUser(canvas) {
       if(eraserEnable) {
         eraseDrawing(x,y)
       }else {
-        drawCircle(x,y,2)
+        drawCircle(x,y)
       }
     }
 
@@ -118,7 +120,7 @@ function listenToUser(canvas) {
       if(eraserEnable) {
         eraseDrawing(x,y)
       }else {
-        drawCircle(x,y)
+        drawCircle(x,y,2)
       }
     }
     
@@ -134,7 +136,7 @@ function listenToUser(canvas) {
             y:y
           }
           drawLine(lastPoint.x,lastPoint.y,x,y)
-          drawCircle(x,y)
+          drawCircle(x,y,2)
           lastPoint = newPoint
         }
       }
