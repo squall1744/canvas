@@ -7,12 +7,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="//at.alicdn.com/t/font_603929_h3q4zlefykua0pb9.js"></script>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <div id="tools" class="active">
-    <button id="eraser">橡皮擦</button>
-    <button id="brush">画笔</button>
+    <svg id="download" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-download"></use>
+    </svg>    
+    <svg id="delete" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-delete"></use>
+    </svg>   
+    <svg id="eraser" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="pen" class="icon active" aria-hidden="true">
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <ul class="color clearfix">
+      <li id="black" class="black active"></li>
+      <li id="red" class="red"></li>
+      <li id="blue" class="blue"></li>
+      <li id="green" class="green"></li>
+    </ul>
   </div>
   <script src="./app.js"></script>
 </body>

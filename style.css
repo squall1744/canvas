@@ -3,34 +3,139 @@
   padding: 0;
 }
 
+ul, li {
+  list-style: none;
+}
+
+.icon {
+  width: 1.5em; height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 body {
-  position: relative;
+
   overflow: hidden;
 }
 
 #canvas {
-  background: #34ed4d;
-}
-
-.active #eraser {
-  position: absolute;
+  position: fixed;
+  top: 0;
   left: 0;
-  bottom: 20px;
 }
 
-.active #brush {
-  display: none;
+#tools #download {
+  width: 2em;
+  height: 2em;
+  position: fixed;
+  right: 20px;
+  top: 5px;
+  color: #555;
 }
 
-.inactive #eraser {
-  display: none;
+#tools #delete {
+  width: 2em;
+  height: 2em;
+  position: fixed;
+  left: 10px;
+  top: 5px;
+  color: #555;
 }
 
-.inactive #brush {
-  position: absolute;
-  left: 0;
-  bottom: 20px;
+#tools #eraser {
+  width: 2em;
+  height: 2em;  
+  position: fixed;
+  left: 45px;
+  top: 5px;
+  color: #aaa;
+  transition: all .5s;
 }
 
+#tools #pen {
+  position: fixed;
+  left: 80px;
+  top: 10px;
+  color: #aaa;
+  transition: all .5s;
+}
+
+
+
+#tools #pen.active {
+  color: #000;
+  transform: scale(1.2);
+}
+
+#tools #eraser.active {
+  color: #000;
+  transform: scale(1.2);
+}
+
+#tools .color {
+  position: fixed;
+  top: 12px;
+  left: 120px;
+}
+
+#tools .color li {
+  float: left;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+  vertical-align: top;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+}
+
+#tools .color .black {
+  background: #000;
+  transition: all .5s;
+}
+
+#tools .color .black.active {
+  transform: scale(1.4);
+}
+
+#tools .color .red {
+  background: red;
+  transition: all .5s;
+}
+
+#tools .color .red.active {
+  transform: scale(1.4);
+}
+
+#tools .color .blue{
+  background: blue;
+  transition: all .5s;
+}
+
+#tools .color .blue.active {
+  transform: scale(1.4);
+}
+
+#tools .color .green{
+  background: green;
+  transition: all .5s;
+}
+
+#tools .color .green.active {
+  transform: scale(1.4);
+}
+
+.clearfix {
+  content: '';
+  display: block;
+  clear: both;
+}
+.icon {
+  width: 1.5em; height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 
 
